@@ -17,7 +17,7 @@ If you face any issues, check if the containters are running:
 $ docker-compose ps
 ```
 
-or chack logs:
+or check logs:
 ```shell
 $ docker-compose logs
 ```
