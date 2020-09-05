@@ -20,8 +20,19 @@ async function savePreview({ uuid, preview }) {
   return rows[0];
 }
 
-const DbService = () => ({
+async function getPreviewByUuid(uuid) {
+  const query = {
+    text: 'SELECT preview FROM previews WHERE uuid = $1',
+    values: [uuid],
+  };
+
+  const { rows } = await pool.query(query);
+  return rows[0];
+}
+
+const DbService = {
   savePreview,
-});
+  getPreviewByUuid,
+};
 
 export default DbService;
