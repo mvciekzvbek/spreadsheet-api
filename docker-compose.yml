@@ -1,10 +1,13 @@
 version: "3.5"
 services:
   postgres:
-    image: postgres
-    container_name: spreadsheets-api-postgres
+    build:
+      context: .
+      dockerfile: db.Dockerfile
+    container_name: spreadsheets-db
     environment:
       POSTGRES_USER: postgres
+      POSTGRES_DB: spreadsheets
       POSTGRES_PASSWORD: postgres
     volumes:
       - 'postgres:/var/lib/postgresql/data'
@@ -13,7 +16,7 @@ services:
   api:
     build:
       context: .
-      dockerfile: ./Dockerfile
+      dockerfile: api.Dockerfile
     container_name: "spreadsheets-api"
     image: spreadsheet-api
     depends_on:
