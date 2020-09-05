@@ -1,5 +1,6 @@
 export default {
   async findOne(req, res, next) {
-    res.status(200);
+    console.log(req);
+    res.sendStatus(200);
   },
 };
