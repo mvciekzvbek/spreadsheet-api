@@ -9,11 +9,11 @@ const pool = new Pool({
   port: process.env.POSTGRES_PORT,
 });
 
-async function savePreview({ uuid, preview }) {
+async function savePreview({ uuid, preview }, url) {
   const now = new Date();
   const query = {
-    text: 'INSERT INTO previews(uuid, preview, created_at) VALUES ($1, $2, $3) RETURNING *',
-    values: [uuid, preview, now],
+    text: 'INSERT INTO previews(uuid, preview, created_at, url) VALUES ($1, $2, $3, $4) RETURNING *',
+    values: [uuid, preview, now, url],
   };
 
   const { rows } = await pool.query(query);
@@ -22,7 +22,7 @@ async function savePreview({ uuid, preview }) {
 
 async function getPreviewByUuid(uuid) {
   const query = {
-    text: 'SELECT preview FROM previews WHERE uuid = $1',
+    text: 'SELECT preview, url FROM previews WHERE uuid = $1',
     values: [uuid],
   };
 
