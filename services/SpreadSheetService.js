@@ -24,7 +24,7 @@ class SpreadSheetService {
     return preview;
   }
 
-  getPreview() {
+  generatePreview() {
     const parsed = strategies[this.mimetype].parse(this.buffer);
     return this.preparePreview(parsed);
   }

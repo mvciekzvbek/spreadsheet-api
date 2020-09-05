@@ -5,7 +5,7 @@ import SpreadSheetPreview from '../models/SpreadSheetPreview';
 export default {
   async upload(req, res, next) {
     const spreadSheetService = new SpreadSheetService(req.file);
-    const preview = spreadSheetService.getPreview();
+    const preview = spreadSheetService.generatePreview();
     const spreadSheetPreview = new SpreadSheetPreview(preview);
 
     const record = await DbService.savePreview(spreadSheetPreview);
