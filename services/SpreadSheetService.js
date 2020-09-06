@@ -1,7 +1,6 @@
-import strategies from '../strategies';
-
 class SpreadSheetService {
-  constructor(file) {
+  constructor(strategies, file) {
+    this.strategies = strategies;
     this.mimetype = file.mimetype;
     this.buffer = file.buffer;
   }
@@ -25,7 +24,7 @@ class SpreadSheetService {
   }
 
   generatePreview() {
-    const parsed = strategies[this.mimetype].parse(this.buffer);
+    const parsed = this.strategies[this.mimetype].parse(this.buffer);
     return this.preparePreview(parsed);
   }
 }
