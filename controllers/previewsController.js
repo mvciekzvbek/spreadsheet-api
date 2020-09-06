@@ -8,7 +8,7 @@ export default {
     const dbService = DbService(dbProvider);
     const record = await dbService.getPreviewByUuid(uuid);
     if (!record) {
-      logger.error('Preview does not exist in database');
+      logger.error(`Preview with uuid=${uuid} does not exist in database`);
       return res.status(404).send({
         message: 'Preview does not exist in database'
       });
