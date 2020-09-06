@@ -7,6 +7,7 @@ const ChildProcessService = {
     compute.send(data);
     compute.on('message', (preview) => {
       callback(preview);
+      compute.kill('SIGINT');
     });
   }
 

@@ -3,7 +3,7 @@ import S3Service from '../services/S3Service';
 import SpreadSheetPreview from '../models/SpreadSheetPreview';
 import s3Provider from '../providers/S3Provider';
 import dbProvider from '../providers/DbProvider';
-import ChildProcessService from '../services/ProcessManagerService';
+import ChildProcessService from '../services/ChildProcessService';
 import { WORKER_PATH } from '../config/constants';
 
 export default {
