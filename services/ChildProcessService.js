@@ -9,7 +9,6 @@ const ChildProcessService = {
       compute.kill('SIGINT');
     });
   }
-
 };
 
 export default ChildProcessService;
