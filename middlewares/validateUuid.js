@@ -2,7 +2,9 @@ import { validate as uuidValidate } from 'uuid';
 
 export default function validateUuid(req, res, next) {
   const sendBadRequest = () => {
-    res.sendStatus(400);
+    res.status(400).send({
+      message: 'UUID is not valid'
+    });
   };
 
   const { uuid } = req.params;

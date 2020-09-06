@@ -28,7 +28,7 @@ const CsvStrategy = () => {
       console.error(err.message);
     });
 
-    parser.write(buffer);
+    parser.write(Buffer.from(buffer));
     parser.end();
 
     return output;

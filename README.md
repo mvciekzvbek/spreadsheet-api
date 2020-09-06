@@ -1,5 +1,14 @@
 # spreadsheet-api
 
+## Business requirements 
+
+1. Ability to import CSV files.
+2. Ability to read previews (header and first five rows) of previously imported CSV files without reparsing.
+3. Previews are being stored in PostgreSQL database.
+4. Spreadsheet files are being stored in AWS S3 Service.
+5. Parsing of the spreadsheet file is implemented within Node.js `child-process`.
+6. Ability to extend functionality by parsing i.e: XLS files.
+
 ## Starting the application
 
 In order to run the application, make sure you have `docker` and `docker-compose` installed on your machine.
