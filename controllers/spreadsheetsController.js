@@ -15,7 +15,7 @@ export default {
     const dbService = DbService(dbProvider);
     const s3Service = S3Service(s3Provider);
 
-    ChildProcessService.delegate(WORKER_PATH, req.file, async (preview) => {
+    ChildProcessService.delegate(WORKER_PATH, req.file, async (err, preview) => {
       const spreadSheetPreview = new SpreadSheetPreview(preview);
 
       const response = await s3Service.upload(

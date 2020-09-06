@@ -1,5 +1,5 @@
 const ROWS = 6;
-const WORKER_PATH = 'workers/readSpreadsheet.js';
+const WORKER_PATH = 'workers/createSpreadsheetPreview.js';
 
 export {
   ROWS,
