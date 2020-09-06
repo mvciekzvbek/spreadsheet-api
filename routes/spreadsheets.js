@@ -8,6 +8,10 @@ const router = Router();
 /**
  * Uploads new spreadsheet
  */
-router.post('/', upload.single('spreadsheet'), catchAsync(spreadsheetsController.upload));
+router.post(
+  '/',
+  upload.single('spreadsheet'),
+  catchAsync(spreadsheetsController.upload),
+);
 
 export default router;
