@@ -10,7 +10,7 @@ const DbService = (provider) => {
     };
 
     const { rows } = await provider.query(query);
-    return rows[0];
+    return rows && rows[0];
   }
 
   async function getPreviewByUuid(uuid) {
@@ -20,13 +20,13 @@ const DbService = (provider) => {
     };
 
     const { rows } = await provider.query(query);
-    return rows[0];
+    return rows && rows[0];
   }
 
   return {
     savePreview,
     getPreviewByUuid,
-  }
+  };
 };
 
 export default DbService;

@@ -1,4 +1,3 @@
-import 'dotenv/config';
 import { fork } from 'child_process';
 
 const ChildProcessService = {

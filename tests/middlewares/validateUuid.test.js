@@ -13,12 +13,22 @@ describe('validateUuid', () => {
 
     const next = sinon.spy();
     const res = {
-      sendStatus: sinon.spy(),
+      _status: null,
+      _json: null,
+      send (json) {
+        this._json = json
+        return this;
+      },
+      status (code) {
+        this._status = code;
+        return this;
+      }
     };
 
     validateUuid(req, res, next);
     expect(next.getCalls()).to.deep.equal([]);
-    expect(res.sendStatus.getCalls()[0].args[0]).to.equal(400);
+    expect(res._status).to.equal(400);
+    expect(res._json).to.deep.equal({message: 'UUID is not valid'});
   });
 
   it('should call next', () => {
