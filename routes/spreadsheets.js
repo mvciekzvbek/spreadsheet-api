@@ -1,10 +1,7 @@
-import multer from 'multer';
 import { Router } from 'express';
 import spreadsheetsController from '../controllers/spreadsheetsController';
 import catchAsync from '../middlewares/catchAsync';
-
-const storage = multer.memoryStorage();
-const upload = multer({ storage: storage });
+import upload from '../middlewares/multer';
 
 const router = Router();
 
