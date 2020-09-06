@@ -1,4 +1,5 @@
 import csvParse from 'csv-parse';
+import { ROWS } from '../config/constants';
 
 const parser = csvParse({
   delimiter: ':',
@@ -16,7 +17,7 @@ const CsvStrategy = () => {
         record = parser.read();
         output.push(record);
         i += 1;
-      } while (i < 6);
+      } while (i < ROWS);
     });
 
     parser.on('error', (err) => {
@@ -32,6 +33,6 @@ const CsvStrategy = () => {
   return {
     parse,
   };
-}
+};
 
 export default CsvStrategy;
