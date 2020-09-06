@@ -24,6 +24,12 @@ class SpreadSheetService {
   }
 
   generatePreview() {
+    const hasStrategy = !!this.strategies[this.mimetype];
+
+    if (!hasStrategy) {
+      throw new Error(`Strategy for ${this.mimetype} missing`);
+    }
+
     const parsed = this.strategies[this.mimetype].parse(this.buffer);
     return this.preparePreview(parsed);
   }
