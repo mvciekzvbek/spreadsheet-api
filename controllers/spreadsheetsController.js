@@ -19,7 +19,6 @@ export default {
     const s3Service = S3Service(s3Provider);
 
     ChildProcessService.delegate(WORKER_PATH, req.file, async (preview) => {
-
       if (preview.errors.length > 0) {
         logger.error('Unable to generate preview');
         return res.status(400).send({
