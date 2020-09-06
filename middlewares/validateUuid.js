@@ -6,12 +6,12 @@ export default function validateUuid(req, res, next) {
   const { uuid } = req.params;
 
   if (!uuid) {
-    sendBadRequest();
+    return sendBadRequest();
   }
   const isValidUuid = uuidValidate(uuid);
 
   if (!isValidUuid) {
-    sendBadRequest();
+    return sendBadRequest();
   }
 
   next();
