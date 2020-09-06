@@ -4,7 +4,8 @@ import dbProvider from '../providers/DbProvider';
 async function savePreview({ preview }, url) {
   const now = new Date();
   const query = {
-    text: 'INSERT INTO previews(preview, created_at, url) VALUES ($1, $2, $3) RETURNING *',
+    text:
+      'INSERT INTO previews(preview, created_at, url) VALUES ($1, $2, $3) RETURNING *',
     values: [preview, now, url],
   };
 

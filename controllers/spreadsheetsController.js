@@ -13,15 +13,20 @@ export default {
     const preview = spreadSheetService.generatePreview();
     const spreadSheetPreview = new SpreadSheetPreview(preview);
 
-    const response = await S3Service.upload(spreadSheetPreview.uuid,
+    const response = await S3Service.upload(
+      spreadSheetPreview.uuid,
       req.file.buffer,
-      req.file.mimetype);
+      req.file.mimetype,
+    );
 
     if (!response || !response.Location) {
       return res.status(400);
     }
 
-    const record = await DbService.savePreview(spreadSheetPreview, response.Location);
+    const record = await DbService.savePreview(
+      spreadSheetPreview,
+      response.Location,
+    );
 
     if (!record) {
       return res.status(400);

@@ -5,11 +5,21 @@ module.exports = {
   },
   extends: [
     'airbnb-base',
+    'prettier'
   ],
   parserOptions: {
     ecmaVersion: 12,
     sourceType: 'module',
   },
   rules: {
+    'no-underscore-dangle': 0,
   },
+  overrides: [
+    {
+      files: ['*.test.js', '*.spec.js'],
+      rules: {
+        'no-unused-expressions': 'off',
+      },
+    },
+  ],
 };
