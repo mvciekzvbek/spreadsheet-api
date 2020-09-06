@@ -1,8 +1,6 @@
 import csvParse from 'csv-parse';
 import { ROWS } from '../config/constants';
 
-
-
 const CsvStrategy = () => {
   const parse = (buffer) => {
     const parser = csvParse({
@@ -28,7 +26,7 @@ const CsvStrategy = () => {
       console.error(err.message);
     });
 
-    parser.write(buffer);
+    parser.write(Buffer.from(buffer));
     parser.end();
 
     return output;
