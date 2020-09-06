@@ -1,22 +1,14 @@
 import 'dotenv/config';
-import { Pool } from 'pg';
+import dbProvider from '../providers/DbProvider';
 
-const pool = new Pool({
-  user: process.env.POSTGRES_USER,
-  host: process.env.POSTGRES_HOST,
-  database: process.env.POSTGRES_DB,
-  password: process.env.POSTGRES_PASSWORD,
-  port: process.env.POSTGRES_PORT,
-});
-
-async function savePreview({ uuid, preview }, url) {
+async function savePreview({ preview }, url) {
   const now = new Date();
   const query = {
-    text: 'INSERT INTO previews(uuid, preview, created_at, url) VALUES ($1, $2, $3, $4) RETURNING *',
-    values: [uuid, preview, now, url],
+    text: 'INSERT INTO previews(preview, created_at, url) VALUES ($1, $2, $3) RETURNING *',
+    values: [preview, now, url],
   };
 
-  const { rows } = await pool.query(query);
+  const { rows } = await dbProvider.query(query);
   return rows[0];
 }
 
@@ -26,7 +18,7 @@ async function getPreviewByUuid(uuid) {
     values: [uuid],
   };
 
-  const { rows } = await pool.query(query);
+  const { rows } = await dbProvider.query(query);
   return rows[0];
 }
 
