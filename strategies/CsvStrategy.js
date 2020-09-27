@@ -1,8 +1,6 @@
 import csvParse from 'csv-parse';
 import { ROWS } from '../config/constants';
 
-
-
 const CsvStrategy = () => {
   const parse = (buffer) => {
     const parser = csvParse({
